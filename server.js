@@ -3,10 +3,10 @@ var app = express();
 var bodyParser = require('body-parser');
 app.use(express.static('public'));
 var mongoose = require('mongoose');
-mongoose.connect(process.env.MONGOLAB_URI, function (error) {
-    if (error) console.error(error);
-    else console.log('mongo connected');
-});
+// Connection URL. This is where your mongodb server is running.
+var url = 'mongodb://james:james@ds031607.mlab.com:31607/complainportal';
+mongoose.connect(url);
+// Use connect method to connect to the Server
 var Schema = mongoose.Schema;
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 // create a schema
@@ -25,7 +25,7 @@ module.exports=Complain;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  // we're connected!
+  console.log("we're connected!");
 });
 app.get('/', function (req, res) {
    res.sendFile( __dirname + "/templates/" + "index.html" );
@@ -55,8 +55,9 @@ app.post('/saveComplain',urlencodedParser, function(req, res){
   });
   res.redirect('/')
 });
-app.set(('port',process.env.PORT || 5000));
-var server = app.listen(app.get('port'), function () {
+var server = app.listen(8081, function () {
+   var host = server.address().address
+   var port = server.address().port
    
-   console.log("listening at http://%s:%s", host, port)
-})
+   console.log("Example app listening at http://%s:%s", host, port)
+})   
