@@ -36,24 +36,38 @@ app.get('/hostel.htm', function (req, res) {
 app.get('/form.htm', function (req, res) {
    res.sendFile( __dirname + "/templates/" + "y.html" );
 })
-
+app.get('/signup', function (req, res) {
+   res.sendFile( __dirname + "/templates/" + "register.html" );
+})
+app.post('/signup', function (req, res) {
+   res.redirect('/');
+})
+app.get('/signin', function (req, res) {
+   res.sendFile( __dirname + "/templates/" + "login.html" );
+})
+app.post('/signin', function (req, res) {
+   res.redirect('/');
+})
+app.get('/profile.htm', function (req, res) {
+   res.sendFile( __dirname + "/templates/" + "profile.html" );
+})
 app.post('/saveComplain',urlencodedParser, function(req, res){
-   data = Complain({
-      name:req.body.name,
-      email:req.body.email,
-      date: Date.now(),
-      type: req.body.type,
-      hostel: req.body.hostel,
-      issue: req.body.issue,
-      rollno: req.body.rollno,
-      Status: "left"
-   });
-   data.save(function(err) {
-  if (err) throw err;
+//   data = Complain({
+//      name:req.body.name,
+//      email:req.body.email,
+//      date: Date.now(),
+//      type: req.body.type,
+//      hostel: req.body.hostel,
+//      issue: req.body.issue,
+//      rollno: req.body.rollno,
+//      Status: "left"
+//   });
+//   data.save(function(err) {
+//  if (err) throw err;
 
-  console.log('Complain Added');
-  });
-  res.redirect('/')
+//  console.log('Complain Added');
+//  });
+  res.redirect('/');
 });
 var server = app.listen(process.env.PORT || 8081, function () {
     var port = server.address().port;
