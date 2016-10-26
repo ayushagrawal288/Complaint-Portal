@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Portal for Repair Issues in Hostel</title>
+  <link rel="shortcut icon" href="images/favicon.jpg" type="image/x-icon">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="To file comllaint regarding maintenance of hostels and Academic area of LNMIIT.">
+  <meta name="author" content="Ayush Agrawal, Shubhanshu Vijay, Akhilesh Maheshwari, Meha Mittal, Harshita Sodani, Pooja Pilania">
+
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  
+  <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+ </head>
+   <body>
+   <div class="jumbotro text-center col-md-12" style='background-image:url("images/y.jpg");background-size:100% 100%;'>
+   <h1 class="top"style='font-size:30px;position:absolute;bottom:560px;right:550px;width:100%; '>Complaint Portal</h1>
+   <a href="#file" class="btn btn-info" role="button" style="font-size:40px;width:30%;border-radius:15px;position:absolute;top:40%;left:18%;">File Complaint</a>
+   <a href="#" class="btn btn-info" role="button" style="font-size:40px;width:30%;border-radius:15px;position:absolute;top:40%;right:18%;">Check Status</a>
+  </div>
+  <div id="file" class="comp_form col-md-12" >
+    <div class="col-md-6 slideanim col-md-offset-3">
+      <form action="../saveComplain" method="POST" id="form">
+        <div class="col-sm-4 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+        <div class="col-sm-4 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+        </div>
+		 <div class="col-sm-4 form-group">
+          <input class="form-control" id="rollno" name="rollno" placeholder="Roll No." type="Roll No." required>
+        </div>
+		<div class="col-sm-4 form-group">
+          <input class="form-control" id="hostel" name="hostel" placeholder="BH/GH" type="Area" required>
+        </div>
+		<div class="col-sm-4 form-group">
+          <input class="form-control" id="type" name="type" placeholder="Type" type="Electrical" required>
+        </div>
+      
+      <input type="text" class="form-control" id="issue" name="issue" placeholder="Issue" rows="2"></textarea><br>
+      </form>
+        <div class="col-sm-4 form-group">
+          <button class="btn btn-default pull-center" form="form" type="submit">Submit</button>
+        </div>
+      
+    </div>
+	</div>
+  <div class="clearfix"></div>
+  <div class="footer">
+    <div class="container">
+    <div class="col-md-8 foot">
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+  
+    <div class="col-md-4 social">
+      <ul>
+              <li><a href="#"><i class="fa fa-facebook fa-2x"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter fa-2x"></i></a></li>
+            <li><a href="#"><me class="fa fa-windows fa-2x" aria-hidden="true"></me></a></li>
+              <li><a href="#"><i class="fa fa-play fa-2x" aria-hidden="true"></i></a></li>
+              <li><a href="#"><me class="fa fa-apple fa-2x" aria-hidden="true"></me></a></li>
+
+          </ul>
+    </div>
+    </div>
+  </div>
+</body>
+</html>
