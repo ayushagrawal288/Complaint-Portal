@@ -20,14 +20,28 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
  </head>
-   <body>
-   <div class="jumbotro text-center col-md-12" style='background-image:url("images/y.jpg");background-size:100% 100%;'>
-   <h1 class="top"style='font-size:30px;position:absolute;bottom:560px;right:550px;width:100%; '>Complaint Portal</h1>
-   <a href="#file" class="btn btn-info" role="button" style="font-size:40px;width:30%;border-radius:15px;position:absolute;top:40%;left:18%;">File Complaint</a>
-   <a href="#" class="btn btn-info" role="button" style="font-size:40px;width:30%;border-radius:15px;position:absolute;top:40%;right:18%;">Check Status</a>
+   <body style='background-image:url("images/4.jpg");background-size:cover;'>
+   <div class="header ">
+      <div class="container">
+        <div class="col-md-6 head_left logo">
+             <h1><a href="index.html">Complaint Portal</a></h1>
+        </div>
+        <div class="col-md-6 head_right nav_right">
+            <ul>
+              <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+       </div> 
   </div>
-  <div id="file" class="comp_form col-md-12" >
-    <div class="col-md-6 slideanim col-md-offset-3">
+   <div class=" text-center">
+   
+    <a href="#file" class="btn btn-info portal active" role="button">File Complaint</a>
+    <a href="#" class="btn btn-info portal" role="button" >Check Status</a>
+    <br><br>
+  
+
+  <div id="file" class="col-md-12" >
+    <div class="col-md-6  col-md-offset-3">
       <form action="../saveComplain" method="POST" id="form">
         <div class="col-sm-4 form-group">
           <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
@@ -35,45 +49,23 @@
         <div class="col-sm-4 form-group">
           <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
         </div>
-		 <div class="col-sm-4 form-group">
+		    <div class="col-sm-4 form-group">
           <input class="form-control" id="rollno" name="rollno" placeholder="Roll No." type="Roll No." required>
         </div>
-		<div class="col-sm-4 form-group">
+		    <div class="col-sm-4 form-group">
           <input class="form-control" id="hostel" name="hostel" placeholder="BH/GH" type="Area" required>
         </div>
-		<div class="col-sm-4 form-group">
+		    <div class="col-sm-4 form-group">
           <input class="form-control" id="type" name="type" placeholder="Type" type="Electrical" required>
         </div>
-      
-      <input type="text" class="form-control" id="issue" name="issue" placeholder="Issue" rows="2"></textarea><br>
-      </form>
+        <textarea  class="form-control" id="issue" name="issue" placeholder="Issue" rows="2"></textarea><br>
         <div class="col-sm-4 form-group">
-          <button class="btn btn-default pull-center" form="form" type="submit">Submit</button>
+          <button class="btn btn-default" form="form" type="submit">Submit</button>
         </div>
-      
+       </form>
     </div>
 	</div>
   <div class="clearfix"></div>
-  <div class="footer">
-    <div class="container">
-    <div class="col-md-8 foot">
-      <ul>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
-    </div>
   
-    <div class="col-md-4 social">
-      <ul>
-              <li><a href="#"><i class="fa fa-facebook fa-2x"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter fa-2x"></i></a></li>
-            <li><a href="#"><me class="fa fa-windows fa-2x" aria-hidden="true"></me></a></li>
-              <li><a href="#"><i class="fa fa-play fa-2x" aria-hidden="true"></i></a></li>
-              <li><a href="#"><me class="fa fa-apple fa-2x" aria-hidden="true"></me></a></li>
-
-          </ul>
-    </div>
-    </div>
-  </div>
 </body>
 </html>

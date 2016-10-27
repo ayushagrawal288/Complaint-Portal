@@ -36,8 +36,16 @@ var complainSchema = new Schema({
   Status: String,
   rollno:String
 });
+var staffSchema=new Schema({
+  name: String,
+  email: String,
+  job: String,
+  password: String
+});
 var Complain=mongoose.model('complain',complainSchema);
 module.exports=Complain;
+var Staff=mongoose.model('staff',staffSchema);
+module.exports=Staff;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -55,14 +63,8 @@ app.get('/form.htm', function (req, res) {
 app.get('/signup', function (req, res) {
    res.sendFile( __dirname + "/templates/" + "register.html" );
 })
-app.post('/signup', function (req, res) {
-   res.redirect('/');
-})
 app.get('/signin', function (req, res) {
    res.sendFile( __dirname + "/templates/" + "login.html" );
-})
-app.post('/signin', function (req, res) {
-   res.redirect('/');
 })
 app.get('/profile.htm', function (req, res) {
    res.sendFile( __dirname + "/templates/" + "profile.html" );
@@ -83,9 +85,41 @@ app.post('/saveComplain',urlencodedParser, function(req, res){
 
   console.log('Complain Added');
   });
-  res.redirect('/');
+ res.redirect('/');
 });
-var server = app.listen(process.env.PORT || 8081, function () {
+app.post('/signup',urlencodedParser, function (req, res,next) {
+    var data = Staff({
+       name:req.body.name,
+       email:req.body.email,
+       password:req.body.password,
+       job: req.body.job
+   });
+	data.save(function(err) {
+  if (err) throw err;
+
+  console.log('user added');
+  });
+ res.redirect('/signin');
+
+});
+
+app.post('/signin',urlencodedParser, function (req, res, next) {
+   var email = req.body.email;
+   var pass = req.body.pass;
+
+   Staff.findOne({email: email, password: pass}, function(err, user) {
+      if(err) return next(err);
+      if(!user) return res.redirect('/');
+      console.log("user login");
+      req.session.user = email;
+      return res.redirect('/');
+   });
+});
+
+app.get('/logout', function (req, res) {
+   req.session.user = null;
+});
+var server = app.listen(process.env.PORT || 8095, function () {
     var port = server.address().port;
     console.log("App now running on port", port);
   });
