@@ -71,7 +71,7 @@ app.get('/profile.htm', function (req, res) {
 })
 app.post('/saveComplain',urlencodedParser, function(req, res){
    data = Complain({
-      name:req.body.email,
+      name:req.body.name,
       email:req.body.email,
       date: Date.now(),
       type: req.body.type,
@@ -87,29 +87,30 @@ app.post('/saveComplain',urlencodedParser, function(req, res){
   });
  res.redirect('/');
 });
-app.post('/signup', function (req, res, next) {
-    var user = {
-       name: req.body.name,
-       email: req.body.email,
-       password: req.body.password,
+app.post('/signup',urlencodedParser, function (req, res,next) {
+    var data = Staff({
+       name:req.body.name,
+       email:req.body.email,
+       password:req.body.password,
        job: req.body.job
-   };
- var staff = mongoose.model('staff', user);
-   UserReg.create(user, function(err, newUser) {
-      if(err) return next(err);
-      req.session.user = email;
-      return res.send('Logged In!');
    });
+	data.save(function(err) {
+  if (err) throw err;
+
+  console.log('user added');
+  });
+ res.redirect('/signin');
+
 });
 
-app.post('/signin', function (req, res, next) {
+app.post('/signin',urlencodedParser, function (req, res, next) {
    var email = req.body.email;
    var pass = req.body.pass;
 
    Staff.findOne({email: email, password: pass}, function(err, user) {
       if(err) return next(err);
-      if(!user) return res.redirect('/signin');
-
+      if(!user) return res.redirect('/');
+      console.log("user login");
       req.session.user = email;
       return res.redirect('/');
    });
